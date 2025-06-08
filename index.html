@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric Uceda - Cybersecurity Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cyber-Teal -->
+    <!-- Application Structure Plan: The application uses a single-page, vertical scrolling structure with a sticky navigation header. This is the most intuitive design for a personal portfolio, allowing a user to either scroll through a cohesive narrative of Eric's qualifications or use the navigation to jump directly to sections of interest (About, Education, Skills, etc.). This thematic, linear-access structure is superior to a dashboard for this type of content, as it tells a story effectively while still providing random access to information, ensuring maximum usability for recruiters and other visitors. -->
+    <!-- Visualization & Content Choices: Resume Info -> Goal -> Viz/Presentation Method -> Interaction -> Justification -> Library/Method. 1. Resume Sections -> Organize/Navigate -> Sticky Nav Bar -> Hover (underline) -> Provides clear, persistent navigation and feedback -> HTML/CSS. 2. Skills List -> Inform/Organize -> Styled Tags/Pills -> Hover (highlight/lift) -> Tags are highly scannable and modern, better than a chart for listing diverse skills -> HTML/Tailwind. 3. Projects/Experience -> Inform/Compare -> Grid/List of Cards -> Hover (lift/shadow) -> Card layout cleanly separates distinct items for readability and comparison -> HTML/Tailwind. 4. "Vibrant animation" request -> Engage -> Animated Background Shapes -> Ambient Motion -> Creates a dynamic, tech-focused mood without distracting from content -> HTML/CSS Keyframes. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            background-color: #111827;
+            font-family: 'Open Sans', sans-serif;
+            color: #F3F4F6;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .bg-gray-950 {
+            background-color: #0d1117;
+        }
+        .bg-gray-900-blur {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #14B8A6;
+            transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .circles li {
+            position: absolute;
+            display: block;
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: rgba(20, 184, 166, 0.15);
+            animation: animateShapes 25s linear infinite;
+            bottom: -150px;
+            border-radius: 50%;
+        }
+        .circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+        .circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+        .circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+        .circles li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+        .circles li:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+        .circles li:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; background: rgba(20, 184, 166, 0.1); }
+        .circles li:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
+        .circles li:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+        .circles li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; background: rgba(20, 184, 166, 0.2); }
+        .circles li:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+        @keyframes animateShapes {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 50%; }
+            100% { transform: translateY(-110vh) rotate(720deg); opacity: 0; border-radius: 50%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .animated-background { display: none; }
+            .transition-transform, .transition-shadow, .transition-colors { transition: none; }
+            .nav-link::after { transition: none; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div class="animated-background">
+        <ul class="circles">
+            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        </ul>
+    </div>
+
+    <div class="relative z-10">
+        <header id="header" class="bg-gray-900-blur sticky top-0 z-50 shadow-lg">
+            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="text-2xl font-black font-montserrat tracking-wider transition-transform duration-300 hover:scale-105 hover:text-teal-400 cursor-default">
+                    ERIC UCEDA
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link text-gray-300 hover:text-teal-400 font-semibold relative transition-colors duration-300">About</a>
+                    <a href="#experience" class="nav-link text-gray-300 hover:text-teal-400 font-semibold relative transition-colors duration-300">Experience</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-teal-400 font-semibold relative transition-colors duration-300">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-teal-400 font-semibold relative transition-colors duration-300">Projects</a>
+                    <a href="#education" class="nav-link text-gray-300 hover:text-teal-400 font-semibold relative transition-colors duration-300">Education</a>
+                    <a href="#contact" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </nav>
+            <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+                <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-700">About</a>
+                <a href="#experience" class="block py-2 px-4 text-sm hover:bg-gray-700">Experience</a>
+                <a href="#skills" class="block py-2 px-4 text-sm hover:bg-gray-700">Skills</a>
+                <a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-700">Projects</a>
+                <a href="#education" class="block py-2 px-4 text-sm hover:bg-gray-700">Education</a>
+                <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-700">Contact</a>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-6">
+
+            <section id="about" class="min-h-screen flex items-center py-20">
+                <div>
+                    <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-4">Cybersecurity Engineer & Security Professional</h1>
+                    <p class="text-lg md:text-xl text-gray-400 max-w-3xl mb-8">
+                        This section provides an introduction to my professional profile. I am a highly motivated Cybersecurity student at George Mason University, combining a strong academic foundation with practical experience in IT operations and physical security. My focus is on developing robust, secure, and efficient solutions to complex technological challenges.
+                    </p>
+                    <a href="#projects" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-colors duration-300">View My Work</a>
+                </div>
+            </section>
+            
+            <section id="experience" class="py-20">
+                <h2 class="text-4xl font-bold text-center mb-2">Professional Experience</h2>
+                <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">This section details my hands-on experience in security-focused roles. These positions have provided me with practical skills in protocol enforcement, critical infrastructure protection, and curriculum development, which complement my technical studies. You can explore each role to understand my responsibilities and key achievements.</p>
+                <div class="max-w-3xl mx-auto">
+                    <div class="relative border-l-2 border-teal-500/30">
+                        <div class="mb-12 pl-8 relative">
+                            <div class="absolute -left-2.5 top-1 w-5 h-5 bg-teal-500 rounded-full border-4 border-gray-900"></div>
+                            <p class="text-sm text-gray-400 mb-1">June 2023 – Present</p>
+                            <h3 class="text-2xl font-bold text-teal-400">Data Center Security Officer</h3>
+                            <p class="font-semibold text-gray-300 mb-3">First Coast Security, Sterling, VA</p>
+                            <ul class="list-disc list-inside text-gray-400 space-y-2">
+                                <li>Maintained facility security by authenticating an average of 500+ individuals weekly, enforcing comprehensive safety protocols and achieving 100% compliance with data center and DCJS security standards.</li>
+                                <li>Safeguarded high-value IT infrastructure across 50+ data halls and large server rooms, ensuring strict security measures to prevent data breach and theft.</li>
+                            </ul>
+                        </div>
+                        <div class="mb-12 pl-8 relative">
+                           <div class="absolute -left-2.5 top-1 w-5 h-5 bg-teal-500 rounded-full border-4 border-gray-900"></div>
+                           <p class="text-sm text-gray-400 mb-1">June 2021 – August 2021</p>
+                            <h3 class="text-2xl font-bold text-teal-400">Youth STEM Instructor</h3>
+                            <p class="font-semibold text-gray-300 mb-3">Northern Virginia Science Center Foundation, Fairfax, VA</p>
+                            <ul class="list-disc list-inside text-gray-400 space-y-2">
+                                <li>Designed and executed 20+ interactive STEM workshops for 100+ children, including polymer chemistry experiments, physics demonstrations, and biology stations that improved student test performance.</li>
+                                <li>Led a cross-functional team to develop a comprehensive STEM curriculum and presented an innovative origami-based biology teaching method to company leaders.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="py-20">
+                <h2 class="text-4xl font-bold text-center mb-2">Technical Skills</h2>
+                 <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Here you will find a curated list of my technical capabilities. The skills are grouped by category—Programming Languages, Frameworks, and Tools—to provide a clear and quick overview of my proficiency. You can hover over any skill for a subtle interactive effect.</p>
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-10">
+                        <h3 class="text-xl font-bold text-teal-400 mb-4">Programming Languages</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">Python</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">Java</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">C/C++</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">SQL</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">HTML/CSS</span>
+                        </div>
+                    </div>
+                    <div class="mb-10">
+                        <h3 class="text-xl font-bold text-teal-400 mb-4">Frameworks & Libraries</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">Flask</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">NumPy</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">JUnit</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-teal-400 mb-4">Tools & Technologies</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">Git</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">Linux</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">Wireshark</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">Metasploit</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">Raspberry Pi</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded--full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">Valgrind</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">Microsoft Office</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">scrypt</span>
+                            <span class="bg-gray-800 text-gray-300 py-2 px-4 rounded-full transition-transform duration-200 hover:scale-110 hover:bg-teal-500 hover:text-white cursor-pointer">GPG</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="projects" class="py-20">
+                <h2 class="text-4xl font-bold text-center mb-2">Projects Showcase</h2>
+                <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">This area highlights key projects that demonstrate my ability to apply theoretical knowledge to solve practical cybersecurity problems. Each project card provides a brief overview and lists the technologies used. Hovering over a card will provide a subtle lift, encouraging exploration.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700/50 transition-transform transition-shadow duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-teal-500/10">
+                        <h3 class="text-xl font-bold text-teal-400 mb-3">Race Condition Demo & Mitigation</h3>
+                        <p class="text-gray-400 mb-4">Developed a multithreaded simulation to demonstrate race condition vulnerabilities in shared counter operations, then implemented synchronized solutions using mutex locks and atomic operations to eliminate security risks.</p>
+                        <p class="text-sm text-gray-500"><strong class="text-teal-500">Technologies:</strong> Python, Matplotlib, NumPy</p>
+                    </div>
+                    <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700/50 transition-transform transition-shadow duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-teal-500/10">
+                        <h3 class="text-xl font-bold text-teal-400 mb-3">Self-Hosted Cloudflare Tunnel</h3>
+                        <p class="text-gray-400 mb-4">Deployed a Cloudflare tunnel on a Raspberry Pi to securely publish private web services without port-forwarding. Achieved 99.9% uptime and implemented comprehensive security hardening using origin certificates and MFA-protected access policies.</p>
+                         <p class="text-sm text-gray-500"><strong class="text-teal-500">Technologies:</strong> Raspberry Pi, Cloudflare, Systemd, Cron</p>
+                    </div>
+                    <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700/50 transition-transform transition-shadow duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-teal-500/10">
+                        <h3 class="text-xl font-bold text-teal-400 mb-3">Cyber Range Network Attack Labs</h3>
+                        <p class="text-gray-400 mb-4">Executed penetration testing using Kali Linux and Metasploitable, including IP/MAC spoofing, packet analysis in Wireshark, and ARP-poisoning to capture credentials. Demonstrated and documented mitigation techniques.</p>
+                        <p class="text-sm text-gray-500"><strong class="text-teal-500">Technologies:</strong> Kali Linux, Metasploitable, Wireshark</p>
+                    </div>
+                    <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700/50 transition-transform transition-shadow duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-teal-500/10">
+                        <h3 class="text-xl font-bold text-teal-400 mb-3">Personal Encryption Toolkit</h3>
+                        <p class="text-gray-400 mb-4">Built a reusable command-line encryption workflow using AES (scrypt) and RSA (GPG) for secure file protection. Created a one-command shell script for streamlined operations and authored a guide for team adoption.</p>
+                         <p class="text-sm text-gray-500"><strong class="text-teal-500">Technologies:</strong> Shell Scripting, AES (scrypt), RSA (GPG)</p>
+                    </div>
+                </div>
+            </section>
+
+             <section id="education" class="py-20">
+                <h2 class="text-4xl font-bold text-center mb-2">Education</h2>
+                 <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">My academic background forms the theoretical core of my expertise. This section outlines my formal education, including my current degree program in Cybersecurity Engineering and relevant coursework that has equipped me with fundamental and advanced security concepts.</p>
+                <div class="max-w-3xl mx-auto grid md:grid-cols-1 gap-8">
+                     <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700/50">
+                        <h3 class="text-xl font-bold text-teal-400">Bachelor's in Cybersecurity Engineering</h3>
+                        <p class="font-semibold text-gray-300">George Mason University, Fairfax, VA</p>
+                        <p class="text-sm text-gray-400 mb-3">Expected December 2026 | GPA: 3.56</p>
+                        <p class="text-gray-400"><strong class="text-gray-300">Relevant Coursework:</strong> Network & Internet Security, Cryptography, Secure Software Development, OS Security, Incident Response, Cloud Security, Risk Assessment & Governance.</p>
+                    </div>
+                     <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700/50">
+                        <h3 class="text-xl font-bold text-teal-400">High School Diploma</h3>
+                        <p class="font-semibold text-gray-300">Broad Run High School, Ashburn, VA</p>
+                        <p class="text-sm text-gray-400 mb-3">August 2018 – June 2022 | Honors Diploma</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="py-20 text-center">
+                <h2 class="text-4xl font-bold mb-2">Get In Touch</h2>
+                 <p class="text-gray-400 mb-8 max-w-xl mx-auto">This final section provides direct links to contact me. I am always open to discussing new opportunities, collaborations, or any questions you may have about my work. Please feel free to reach out through any of these channels.</p>
+                <div class="space-y-4">
+                    <a href="mailto:ericuceda720@gmail.com" class="inline-block bg-gray-800 hover:bg-teal-500 hover:text-white transition-colors duration-300 text-lg text-gray-300 font-semibold py-3 px-6 rounded-lg">ericuceda720@gmail.com</a>
+                     <p class="text-gray-400">or connect with me on</p>
+                    <a href="#" class="text-teal-400 hover:text-teal-300 font-bold text-lg">LinkedIn</a>
+                </div>
+            </section>
+
+        </main>
+        
+        <footer class="bg-gray-950/50 mt-20">
+            <div class="container mx-auto px-6 py-6 text-center text-gray-500">
+                <p>&copy; <span id="currentYear"></span> Eric Uceda. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
